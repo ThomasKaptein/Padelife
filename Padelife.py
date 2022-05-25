@@ -32,20 +32,11 @@ with col3:
     clin = st.checkbox('Clinic')
     if clin:
         st.write('Hmm, clinic zeg je...')
-        pers_c = st.radio(
-        "Leuk, met hoeveel personen dan?",
-        (4, 6, 8))
+        pers_c = st.number_input(
+        "Leuk, met hoeveel personen dan?", min_value=4, max_value=24, value=8, step=1)
         
-        if pers_c == 8:
-            p_c = 2
-            st.write('Met 8 personen een clinic.')
-        elif pers_c == 6:
-            p_c = 2
-            st.write("Met 6 personen een clinic.")
-        else:
-            p_c = 1
-            st.write("Met 4 personen een clinic.")
-        
+        p_c = math.ceil(pers_c / 4)
+        #train_c = math.ceil(pers_c / 8)
         duur_c = st.radio(
         "Hoeveel minuten?",
         (60, 90))
@@ -56,22 +47,28 @@ with col3:
             t_c = 36
         else:
             t_c = 32
+            
+        train_c = st.number_input(
+        "Hoeveel trainers?", min_value=1, max_value=6, value=1, step=1)
         extra_c = st.multiselect(
             'Welke extra dingen zijn nodig (meerdere te selecteren)',
-            ['Rackets', 'Ballen'])
+            ['Rackets'])
         if 'Rackets' in extra_c:
             tot_c = tot_c + pers_c * 5
-        if 'Ballen' in extra_c:
-            tot_c = tot_c + 5 * duur_c / 60
-        tot_c = tot_c + t_c * p_c * duur_c / 60
+       
+        trainer = 30 * train_c
+        tot_c = tot_c + (t_c * p_c + trainer) * duur_c / 60
+        totp_c = tot_c / pers_c
+        st.write('Totaal clinic = 5 euro ballen per uur per baan * ', tot_c)
         st.write('Totaal clinic = ', tot_c)
+        st.write('Totaal clinic per persoon= ', totp_c)
 with col4:
-    lad = st.checkbox('Laddertoernooi')
+    lad = st.checkbox('Toernooi toernooi toernooi')
     if lad:
-        st.write('Hmm, laddertoernooitje heeft je voorkeur...')
+        st.write('Hmm, toernooitje heeft je voorkeur...')
         pers_l = st.number_input(
-        "Leuk, met hoeveel personen dan?", min_value=4, max_value=16, value=8, step=1)
-        st.write('Met ', pers_l, ' personen een laddertoernooi.')
+        "Leuk, met hoeveel personen dan?", min_value=12, max_value=24, value=12, step=1)
+        st.write('Met ', pers_l, ' personen een toernooi.')
         ###
         p_l = math.ceil(pers_l / 4)
         duur_l = st.radio(
@@ -95,7 +92,7 @@ with col4:
         if 'Begeleiding' in extra_l:
             tot_l = tot_l + 15 * duur_l / 60
         tot_l = tot_l + t_l * p_l * duur_l / 60
-        st.write('Totaal laddertoernooi = ', tot_l)
+        st.write('Totaal toernooi = ', tot_l)
 st.write('Anders nog iets?')
 koffie = st.checkbox('Welkomstdrankje')
 if koffie:
@@ -107,19 +104,26 @@ if bier:
     b = st.number_input(
         "Hoeveel?", min_value=1, max_value=200, value=4, step=1)
     tot_a = tot_a + b * 3
-cat = st.checkbox('Catering')
+cat = st.checkbox('Catering (excl. drank)')
 if cat:
     c = st.number_input(
         "Voor hoeveel pers?", min_value=1, max_value=200, value=4, step=1)
-    tot_a = tot_a + c * 10
-    st.write('@boy: voor het rekenvoorbeeld heb ik 10euro pp gekozen voor catering')
+    c1 = st.number_input(
+        "Bedrag per persoon?", min_value=5, max_value=50, value=5, step=1)
+    tot_a = tot_a + c * c1
+    #st.write('@boy: voor het rekenvoorbeeld heb ik 10euro pp gekozen voor catering')
 
 ver = st.checkbox('Vergaderen')
 if ver:
-    v = st.radio(
-    "Hoe lang te vergaderen?",
-    ("Halve dag (@Boy: ik zou aanraden hier uit een #uren te laten kiezen", "Hele dag", "Vergaderzaal halve dag", "Vergaderzaal hele dag"))
-    st.write('vergaderen wordt nu nog niet mee gerekend ')
+    st.write("Wat voor plek wil je?")
+    flex = st.checkbox('Flexplek')
+    if flex:
+        fl = st.number_input(
+        "Hoeveel?", min_value=1, max_value=16, value=4, step=1)
+        v = st.radio(
+        "Hoe lang te vergaderen?",
+        ("Halve dag", "Hele dag", "Vergaderzaal halve dag", "Vergaderzaal hele dag"))
+        st.write('nog toevoegen: optie om eigen vergaderzaal')
 
 tot = tot_c + tot_l + tot_a
 st.write('totaal:', tot)
