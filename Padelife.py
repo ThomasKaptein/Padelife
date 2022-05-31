@@ -96,7 +96,7 @@ with col4:
         else:
             t_l = 37
         extra_l = st.multiselect(
-            'Welke extra dingen zijn nodig',
+            'Welke extra dingen zijn gewenst?',
             ['Rackets'])
         if 'Rackets' in extra_l:
             tot_l = tot_l + pers_l * 5
@@ -118,13 +118,13 @@ with col4:
         baan_b = st.number_input(
         "Hoeveel banen?", min_value=1, max_value=6, value=3, step=1)
         duur_b = st.radio(
-        "Hoeveel minuten?",
+        "Hoelang (in minuten)?",
         (60, 90, 120))
         
         tijd_b = st.radio(
         "Piek of dal tijd?",
-        ('Piek uren', 'Dal uren'))
-        if tijd_b == 'Piek uren':
+        ('Piek tijd', 'Dal tijd'))
+        if tijd_b == 'Piek tijd':
             t_b = 36
         else:
             t_b = 32
@@ -168,7 +168,7 @@ if ver:
     flex = st.checkbox('Flexplek')
     if flex:
         fl = st.number_input(
-        "Hoeveel?", min_value=1, max_value=16, value=4, step=1)
+        "Hoeveel plekken?", min_value=1, max_value=16, value=4, step=1)
         v = st.radio(
         "Hoe lang?",
         ("Halve dag", "Hele dag"))
