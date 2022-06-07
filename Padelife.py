@@ -69,7 +69,7 @@ with col3:
         if 'Rackets' in extra_c:
             tot_c = tot_c + pers_c * 5
        
-        trainer = 30 * train_c
+        trainer = 40 * train_c
         tot_c = round((tot_c + (t_c * baan_c + trainer) * duur_c / 60),2)
         totp_c = round((tot_c / pers_c),2)
         st.write('Totaal banen = ', baan_c, 'banen * ', t_c, 'euro per uur incl. 5 euro per uur voor de ballen = ', t_c*baan_c*duur_c / 60)
@@ -215,11 +215,11 @@ if ver:
         "Hoeveel personen komen er?", min_value=1, max_value=None, value=4, step=1)
         t_w = st.radio(
         "Hoe lang Worklife te gebruiken?",
-        ("Halve dag", "Hele dag"))
-        if 'Halve dag' in t_w:
-            tot_v = tot_v + 250
-        if 'Hele dag' in t_w:
-            tot_v = tot_v + 500
+        ("Halve dag a 4 uur", "Hele dag van 9uur - 19uur"))
+        if 'Halve dag a 4 uur' in t_w:
+            tot_v = tot_v + 400
+        if 'Hele dag van 9uur - 19uur' in t_w:
+            tot_v = tot_v + 950
     st.write('Totaal vergaderen =', tot_v)
             
 
