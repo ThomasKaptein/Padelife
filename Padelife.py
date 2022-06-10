@@ -217,9 +217,9 @@ if ver:
         "Hoe lang Worklife te gebruiken?",
         ("Halve dag a 4 uur", "Hele dag van 9uur - 19uur"))
         if 'Halve dag a 4 uur' in t_w:
-            tot_v = tot_v + 400
+            tot_v = tot_v + 400 * 1.21
         if 'Hele dag van 9uur - 19uur' in t_w:
-            tot_v = tot_v + 950
+            tot_v = tot_v + 950 * 1.21
     st.write('Totaal vergaderen =', tot_v)
             
 
