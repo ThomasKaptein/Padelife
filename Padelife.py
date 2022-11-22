@@ -57,7 +57,7 @@ with col3:
         "Piek of dal tijd? (Piek = ma-vrij vanaf 16uur en zat-zo, Dal = ma - vrij tot 16uur)",
         ('Piek', 'Dal'))
         if tijd_c == 'Piek':
-            t_c = 41
+            t_c = 45
         else:
             t_c = 37
             
@@ -96,7 +96,7 @@ with col4:
         "Piek of dal tijd? (Piek = ma-vrij vanaf 16uur en zat-zo, Dal = ma - vrij tot 16uur)",
         ('Piek uren', 'Dal uren'))
         if tijd_l == 'Piek uren':
-            t_l = 41
+            t_l = 45
         else:
             t_l = 37
         extra_l = st.multiselect(
@@ -130,7 +130,7 @@ with col4:
         "Piek of dal tijd? (Piek = ma-vrij vanaf 16uur en zat-zo, Dal = ma - vrij tot 16uur)",
         ('Piek tijd', 'Dal tijd'))
         if tijd_b == 'Piek tijd':
-            t_b = 36
+            t_b = 40
         else:
             t_b = 32
         #counter om extra's bij te houden
