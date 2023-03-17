@@ -63,13 +63,15 @@ with col3:
             
         train_c = st.number_input(
         "Hoeveel trainers?", min_value=1, max_value=6, value=1, step=1)
+        train_c1 = st.number_input(
+        "Trainer koster per uur?", min_value=30, max_value=120, value=1, step=1)
         extra_c = st.multiselect(
             'Welke extra dingen zijn nodig',
             ['Rackets'])
         if 'Rackets' in extra_c:
             tot_c = tot_c + pers_c * 5
        
-        trainer = 40 * train_c
+        trainer = train_c1 * train_c
         tot_c = round((tot_c + (t_c * baan_c + trainer) * duur_c / 60),2)
         totp_c = round((tot_c / pers_c),2)
         st.write('Totaal banen = ', baan_c, 'banen * ', t_c, 'euro per uur incl. 5 euro per uur voor de ballen = ', t_c*baan_c*duur_c / 60)
