@@ -64,7 +64,7 @@ with col3:
         train_c = st.number_input(
         "Hoeveel trainers?", min_value=1, max_value=6, value=1, step=1)
         train_c1 = st.number_input(
-        "Trainer koster per uur?", min_value=30, max_value=120, value=1, step=1)
+        "Trainer kosten per uur?", min_value=30, max_value=120, value=40, step=1)
         extra_c = st.multiselect(
             'Welke extra dingen zijn nodig',
             ['Rackets'])
